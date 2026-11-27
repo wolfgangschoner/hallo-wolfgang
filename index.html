@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ee">
+  <meta name="description" content="Ein kleiner, eleganter Gruß für Wolfgang.">
+  <title>Hallo, Wolfgang</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17231f;
+      --muted: #64736c;
+      --paper: #f5f3ee;
+      --accent: #c4f06b;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100svh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      padding: 24px;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 12% 18%, rgb(196 240 107 / 23%), transparent 34%),
+        radial-gradient(ellipse at 90% 82%, rgb(164 194 181 / 24%), transparent 36%),
+        var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .16;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+    }
+
+    main {
+      position: relative;
+      width: min(100%, 760px);
+      min-height: min(560px, calc(100svh - 48px));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(28px, 6vw, 58px);
+      overflow: hidden;
+      border: 1px solid rgb(23 35 31 / 9%);
+      border-radius: 28px;
+      background: rgb(255 255 255 / 62%);
+      box-shadow: 0 28px 80px rgb(23 35 31 / 9%), inset 0 1px rgb(255 255 255 / 90%);
+      backdrop-filter: blur(18px);
+      animation: arrive 900ms cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    .topline, footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--ink);
+      color: var(--accent);
+      font-size: 19px;
+    }
+
+    .eyebrow, footer {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow { margin: 0; }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 52px 0;
+    }
+
+    h1 {
+      max-width: 650px;
+      margin: 0;
+      font-size: clamp(56px, 12vw, 112px);
+      font-weight: 570;
+      letter-spacing: -.085em;
+      line-height: .92;
+    }
+
+    h1 span {
+      display: block;
+      color: #78877e;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: -.075em;
+    }
+
+    .spark {
+      position: absolute;
+      top: 8%;
+      right: 7%;
+      width: clamp(90px, 17vw, 150px);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgb(23 35 31 / 12%);
+      border-radius: 50%;
+      color: #80936e;
+      font-size: 40px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .spark::before, .spark::after {
+      position: absolute;
+      content: "";
+      border: 1px solid rgb(23 35 31 / 9%);
+      border-radius: 50%;
+      inset: 12px;
+    }
+    .spark::after { inset: -10px; border-color: rgb(23 35 31 / 6%); }
+
+    footer { letter-spacing: .08em; }
+    .status { display: flex; align-items: center; gap: 9px; }
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #88b84b;
+      box-shadow: 0 0 0 4px rgb(136 184 75 / 15%);
+    }
+
+    @keyframes arrive {
+      from { opacity: 0; transform: translateY(18px) scale(.985); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-8deg); }
+      50% { transform: translateY(-10px) rotate(4deg); }
+    }
+
+    @media (max-width: 520px) {
+      main { min-height: min(520px, calc(100svh - 32px)); padding: 26px; border-radius: 22px; }
+      body { padding: 16px; }
+      .spark { top: 15%; right: 8%; opacity: .72; }
+      .content { padding: 64px 0; }
+      footer { font-size: 10px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <main>
+    <header class="topline">
+      <div class="mark" aria-hidden="true">✳</div>
+      <p class="eyebrow">Ein kleiner Gruß</p>
+    </header>
+
+    <div class="content">
+      <div class="spark" aria-hidden="true">✳</div>
+      <h1>Hallo,<span>Wolfgang.</span></h1>
+    </div>
+
+    <footer>
+      <span>Schön, dass du da bist.</span>
+      <span class="status"><span class="dot" aria-hidden="true"></span>Alles bereit</span>
+    </footer>
+  </main>
+</body>
+</html>
